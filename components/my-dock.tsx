@@ -1,10 +1,16 @@
 "use client"
 
+import { useEffect } from "react";
 // components
 import Link from "next/link";
 import { Dock, DockIcon } from "./magicui/dock";
 import { Separator } from "./ui/separator";
 import { ModeToggle } from "./mode-toggle";
+import useFolder from "./folder";
+// libs
+import { cn } from "@/lib/utils";
+// stores
+import { useQuery } from "@/stores/query";
 // icons
 import {
     SearchIcon,
@@ -34,11 +40,23 @@ const Icons = [
 ]
 
 const MyDock: React.FC = () => {
+    const { status } = useQuery();
+    const { isFold, setIsFold, Folder } = useFolder();
+
+    useEffect(() => {
+        if (status === "search") setIsFold(true)
+    }, [status]);
+
     return (
-        <div className="fixed bottom-4 w-full h-fit">
+        <div className={cn(
+            "fixed w-full transition-all duration-500 flex flex-col items-center",
+            !isFold && "bottom-4",
+            isFold && "-bottom-14",
+        )}>
+            <Folder />
             <Dock
                 direction="middle"
-                className="bg-white dark:bg-secondary rounded-full"
+                className="bg-white dark:bg-secondary rounded-full mt-3"
             >
                 {
                     Icons.map(({ icon, herf }) => (

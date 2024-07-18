@@ -15,10 +15,9 @@ const Page: React.FC = () => {
   const { status } = useQuery();
 
   return (
-    <div className="w-full h-full py-4 flex items-center justify-center">
-      <div className="max-w-[780px] h-full w-full flex flex-col justify-center">
+    <div className="w-full h-full p-4 flex flex-col items-center justify-center">
         <section className={cn(
-          "transition-all duration-500 mb-4",
+          "max-w-[800px] w-full transition-all duration-500 mb-4",
           status === "search" && "-mt-[50px] opacity-0 filter: blur-5",
         )}>
           <Slogan />
@@ -35,15 +34,16 @@ const Page: React.FC = () => {
           }
         </section>
 
-        <CourseSearcher />
+        <section className="max-w-[800px] w-full mb-4">
+          <CourseSearcher />
+        </section>
 
         <div className={cn(
-          "mt-4 transition-all duration-500 overflow-hidden",
-          status === "search" && "mt-9 -mb-[80px] opacity-0 filter: blur-5"
+          "max-w-[800px] w-full transition-all duration-500 overflow-hidden",
+          status === "search" && "hidden"
         )}>
           <SupportedPlatform />
         </div>
-      </div>
     </div>
   );
 };

@@ -23,17 +23,19 @@ const CourseSearcher: React.FC = () => {
     const onSearch = () => {
         changeStatus("search");
     }
-    // 按下回车键时触发搜索
+    // 按下回车键时触发搜索，按下 tab 键将 placeholder 作为 value
     const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && queryStr !== "") {
+        if (e.keyCode === 13 && queryStr !== "") {
             onSearch();
             setIsFocused(false);
             e.currentTarget.blur();
+        } else if (e.keyCode === 9) {
+            setQueryStr("有哪些适合初学者的 Python 课程？");
         }
     }
 
     return (
-        <div className={cn("relative w-[780px] rounded-full overflow-hidden p-3", 
+        <div className={cn("relative w-full rounded-full overflow-hidden p-3", 
         "bg-white dark:bg-secondary shadow-balance flex items-center justify-between",
         "transition-all duration-500",
         isFocused ? "my-8 scale-105" : "mt-0 scale-100")}>

@@ -44,19 +44,23 @@ const MyDock: React.FC = () => {
     const { isFold, setIsFold, Folder } = useFolder();
 
     useEffect(() => {
-        if (status === "search") setIsFold(true)
+        if (status === "search") {
+            setIsFold(true)
+        } else {
+            setIsFold(false)
+        }
     }, [status]);
 
     return (
         <div className={cn(
             "fixed w-full transition-all duration-500 flex flex-col items-center",
             !isFold && "bottom-4",
-            isFold && "-bottom-14",
+            isFold && "-bottom-[60px]",
         )}>
             <Folder />
             <Dock
                 direction="middle"
-                className="bg-white dark:bg-secondary rounded-full mt-3"
+                className="bg-white dark:bg-secondary rounded-full mt-3 dark:border dark:border-gray-700"
             >
                 {
                     Icons.map(({ icon, herf }) => (

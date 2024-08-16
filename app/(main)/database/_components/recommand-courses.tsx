@@ -1,9 +1,8 @@
+import Link from "next/link";
 // ui
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -21,24 +20,23 @@ const RecommandCourses: React.FC = () => {
         <div className="grid grid-cols-3 gap-4">
           {
             mockCourseData.map((course, index) => (
-              <Card
-                key={index}
-                className="w-full rounded-2xl hover:cursor-pointer hover:bg-secondary/50"
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl line-clamp-1 mb-1">
-                    {course.courseInfo.courseName}
-                  </CardTitle>
-                  <CourseBadges
-                    isNationalQualityCourse={course.courseInfo.isNationalQualityCourse}
-                    primaryDiscipline={course.courseInfo.primaryDiscipline.split(",")}
-                    courseType={course.courseInfo.courseType.split(",")}
-                  />
-                </CardHeader>
-                <CardContent>
-                  <CourseFinalScore finalScore={course.scores.Final.FinalScore} />
-                </CardContent>
-              </Card>
+              <Link key={index} href={`/database/${index}`}>
+                <Card className="w-full rounded-2xl hover:cursor-pointer hover:bg-secondary/50">
+                  <CardHeader>
+                    <CardTitle className="text-xl line-clamp-1 mb-1">
+                      {course.courseInfo.courseName}
+                    </CardTitle>
+                    <CourseBadges
+                      isNationalQualityCourse={course.courseInfo.isNationalQualityCourse}
+                      primaryDiscipline={course.courseInfo.primaryDiscipline.split(",")}
+                      courseType={course.courseInfo.courseType.split(",")}
+                    />
+                  </CardHeader>
+                  <CardContent>
+                    <CourseFinalScore finalScore={course.scores.Final.FinalScore} />
+                  </CardContent>
+                </Card>
+              </Link>
             ))
           }
         </div>

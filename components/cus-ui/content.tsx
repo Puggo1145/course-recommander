@@ -11,9 +11,7 @@ const Content: React.FC<ContentProps> = ({
     paddingX = 4,
     paddingY = 4,
 }) => {
-    const contentStyle = {
-        padding: `py-${paddingY} px-${paddingX}`,
-    }
+    const contentStyle = `py-${paddingY} px-${paddingX}`
 
     return (
         <div className={cn("w-full mt-4", contentStyle)}>

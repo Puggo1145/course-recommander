@@ -1,10 +1,11 @@
-import type React from "react";
+// components
+import MainLayout from "@/components/main-layout";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <main className="max-w-[1200px] w-full flex-1">
+    <MainLayout>
         {children}
-    </main>
+    </MainLayout>
   );
 };
 

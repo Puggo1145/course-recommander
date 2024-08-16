@@ -1,6 +1,7 @@
 "use client";
 
 // components
+import Container from "@/components/container";
 import CourseSearcher from "./_components/course-searcher";
 import Slogan from "./_components/slogan";
 import SupportedPlatform from "./_components/supported-platform";
@@ -15,7 +16,7 @@ const Page: React.FC = () => {
   const { status } = useQuery();
 
   return (
-    <div className="w-full h-full p-4 flex flex-col items-center justify-center">
+    <Container>
         <section className={cn(
           "max-w-[800px] w-full transition-all duration-500 mb-4",
           status === "search" && "-mt-[50px] opacity-0 filter: blur-5",
@@ -44,7 +45,7 @@ const Page: React.FC = () => {
         )}>
           <SupportedPlatform />
         </div>
-    </div>
+    </Container>
   );
 };
 

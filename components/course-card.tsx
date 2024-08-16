@@ -14,7 +14,7 @@ import { Skeleton } from "./ui/skeleton";
 
 
 const CardContentTexts = ({
-    icon,
+    // icon,
     label,
     content
 }: {

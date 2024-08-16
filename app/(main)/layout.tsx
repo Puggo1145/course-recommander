@@ -1,5 +1,5 @@
 // components
-import MainLayout from "@/components/main-layout";
+import MainLayout from "@/components/cus-ui/main-layout";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (

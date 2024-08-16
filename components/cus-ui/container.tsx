@@ -23,7 +23,7 @@ const Container: React.FC<ContainerProps> = ({
     );
 
     return (
-        <div className={cn("w-full h-full", containerStyle)}>
+        <div className={cn("w-full h-full gap-4", containerStyle)}>
             {children}
         </div>
     );

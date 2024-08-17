@@ -28,8 +28,8 @@ const RecommandCourses: React.FC = () => {
                     </CardTitle>
                     <CourseBadges
                       isNationalQualityCourse={course.courseInfo.isNationalQualityCourse}
-                      primaryDiscipline={course.courseInfo.primaryDiscipline.split(",")}
-                      courseType={course.courseInfo.courseType.split(",")}
+                      primaryDiscipline={course.courseInfo.primaryDiscipline}
+                      courseType={course.courseInfo.courseType}
                     />
                   </CardHeader>
                   <CardContent>

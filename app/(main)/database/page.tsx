@@ -8,7 +8,7 @@ const Page: React.FC = () => {
   return (
     <Container Xcenter={false}>
       <Title>课程数据库</Title>
-      <Content>
+      <Content paddingX={0}>
         <RecommandCourses />
       </Content>
     </Container>

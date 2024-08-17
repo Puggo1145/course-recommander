@@ -34,7 +34,7 @@ const KnowledgeRatePie: React.FC<KnowledgeRatePieProps> = ({ coverageRate }) => 
                     {
                         name: 'Not Covered',
                         value: 100 - coverageRate,
-                        itemStyle: { color: '#F0F0F0' },
+                        itemStyle: { color: '#d2d5da' },
                     },
                 ],
             },

@@ -6,7 +6,6 @@ import CourseEvaluationWordCloud from "./course-evaluation-wordcloud";
 
 
 interface CourseBasicBentoProps {
-    disciplines: string;
     courseTeam: string;
     knowledgePointCoverageRate: number;
 }
@@ -26,7 +25,7 @@ const CourseBasicBento: React.FC<CourseBasicBentoProps> = ({
                         <div className="overflow-x-scroll flex flex-wrap items-center gap-2">
                             {
                                 courseTeam.split('、').map((name, index) => (
-                                    <Badge key={index}>{name}</Badge>
+                                    <Badge key={index} className="bg-muted-foreground">{name}</Badge>
                                 ))
                             }
                         </div>
@@ -46,7 +45,7 @@ const CourseBasicBento: React.FC<CourseBasicBentoProps> = ({
             name: "知识点覆盖率",
             description: "知识点覆盖率体现了课程所教授内容的全面性",
             className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-            background: <KnowledgeRatePie coverageRate={Math.floor(knowledgePointCoverageRate * 100)} />,
+            background: <KnowledgeRatePie coverageRate={Number((knowledgePointCoverageRate * 100).toFixed(1))} />,
         },
     ];
 

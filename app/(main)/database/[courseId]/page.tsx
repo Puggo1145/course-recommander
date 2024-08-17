@@ -1,5 +1,7 @@
 "use client";
 
+// icons
+import { ChevronRight } from "lucide-react";
 // ui
 import Container from "@/components/cus-ui/container";
 import BackButton from "@/components/cus-ui/back-button";
@@ -31,7 +33,10 @@ const Page = ({ params }: { params: { courseId: number } }) => {
             <BackButton />
             <CourseDetailHeader>
                 <CourseDetailIntroduction>
-                    <Title className="line-clamp-1">{course.courseInfo.courseName}</Title>
+                    <Title className="line-clamp-1 flex items-center cursor-pointer hover:text-gray-600 transition-all">
+                        {course.courseInfo.courseName}
+                        <ChevronRight size={32} />
+                    </Title>
                     <CourseBadges
                         isNationalQualityCourse={course.courseInfo.isNationalQualityCourse}
                         primaryDiscipline={course.courseInfo.primaryDiscipline}
@@ -52,7 +57,6 @@ const Page = ({ params }: { params: { courseId: number } }) => {
             </CourseDetailHeader>
             <Content>
                 <CourseBasicBento 
-                    disciplines={course.courseInfo.primaryDiscipline + course.courseInfo.secondaryDiscipline}
                     courseTeam={course.courseInfo.courseTeam}
                     knowledgePointCoverageRate={course.courseInfo.knowledgePointCoverageRate}
                 />

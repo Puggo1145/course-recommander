@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { studentEvaluationColor } from "@/lib/text-color";
+import { studentEvaluationColor, scoreColor } from "@/lib/text-color";
 
 
 interface CourseDetailInfoProps {
@@ -57,7 +57,7 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
         <CourseDetailInfoTitle>
           综合推荐度
         </CourseDetailInfoTitle>
-        <CourseDetailInfoValue>
+        <CourseDetailInfoValue className={scoreColor(info.finalScore)}>
           {Math.floor(info.finalScore * 100)}%
         </CourseDetailInfoValue>
       </CourseDetailInfoItem>
@@ -70,7 +70,7 @@ export default CourseDetailInfo;
 
 const CourseDetailInfoCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="px-6 py-4 rounded-2xl border bg-card flex gap-x-8">
+    <div className="w-fit px-6 py-4 rounded-2xl border bg-card flex gap-x-8">
       {children}
     </div>
   );

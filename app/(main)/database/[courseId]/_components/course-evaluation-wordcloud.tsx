@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+
 import ReactEchartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -43,7 +45,7 @@ const CourseEvaluationWordCloud: React.FC = () => {
       option={options}
       notMerge={true}
       lazyUpdate={true}
-      style={{ width: '100%', height: '280px', position: 'absolute', top: 0, left: 0 }}
+      style={{ width: '100%', height: '400px', position: 'absolute', top: 0, left: 0 }}
     />
   );
 };

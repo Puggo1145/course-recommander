@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import ReactEchartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
@@ -7,11 +9,8 @@ import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([PieChart, LabelLayout, UniversalTransition, CanvasRenderer]);
 
-interface KnowledgeRatePieProps {
-    coverageRate: number;
-}
 
-const KnowledgeRatePie: React.FC<KnowledgeRatePieProps> = ({ coverageRate }) => {
+const KnowledgeRatePie: React.FC<{ knowledgeCoverageRatio: number }> = ({ knowledgeCoverageRatio }) => {
     const options = {
         series: [
             {
@@ -28,12 +27,12 @@ const KnowledgeRatePie: React.FC<KnowledgeRatePieProps> = ({ coverageRate }) => 
                 data: [
                     {
                         name: 'Covered',
-                        value: coverageRate,
+                        value: knowledgeCoverageRatio,
                         itemStyle: { color: '#6c727f' },
                     },
                     {
                         name: 'Not Covered',
-                        value: 100 - coverageRate,
+                        value: 100 - knowledgeCoverageRatio,
                         itemStyle: { color: '#d2d5da' },
                     },
                 ],

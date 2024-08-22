@@ -10,7 +10,7 @@ const CourseFinalScore: React.FC<{ finalScore: number }> = ({ finalScore }) => {
             </p>
             <div className="flex items-end gap-x-1">
                 <p className={cn(scoreColor(finalScore), "text-3xl font-bold leading-none")}>
-                    {Math.floor(finalScore * 100)}
+                    {finalScore}
                 </p>
                 <span className="text-sm text-gray-400">%</span>
             </div>

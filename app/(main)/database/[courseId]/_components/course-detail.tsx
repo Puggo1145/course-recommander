@@ -1,6 +1,6 @@
 export const CourseDetailHeader: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="pl-4 flex items-center justify-between">
+    <div className="pl-4 flex items-center justify-between gap-x-16">
         {children}
     </div>
   );

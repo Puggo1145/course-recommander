@@ -2,25 +2,23 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface CourseBadgesProps {
+    university: string;
     isNationalQualityCourse: boolean;
-    primaryDiscipline: string;
-    courseType: string;
+    primaryDiscipline: string[];
+    secondaryDiscipline: string[];
 }
 
 
 const CourseBadges: React.FC<CourseBadgesProps> = ({
+    university,
     isNationalQualityCourse,
     primaryDiscipline,
-    courseType,
+    secondaryDiscipline
 }) => {
-    const parsedPrimaryDiscipline = primaryDiscipline.split(",");
-    const parsedCourseType = courseType.split(",");
-
-
     return (
         <ScrollArea className="w-full">
             <div className="flex items-center gap-2">
-                <Badge>XXXX大学</Badge>
+                <Badge>{university}</Badge>
                 {
                     isNationalQualityCourse && (
                         <Badge>国家精品课程</Badge>
@@ -28,23 +26,12 @@ const CourseBadges: React.FC<CourseBadgesProps> = ({
                 }
 
                 {
-                    parsedPrimaryDiscipline.map((discipline, index) => (
+                    primaryDiscipline.concat(secondaryDiscipline).map((discipline, index) => (
                         <Badge
                             key={index}
                             variant="secondary"
                         >
                             {discipline}
-                        </Badge>
-                    ))
-                }
-
-                {
-                    parsedCourseType.map((type, index) => (
-                        <Badge
-                            key={index}
-                            variant="secondary"
-                        >
-                            {type}
                         </Badge>
                     ))
                 }

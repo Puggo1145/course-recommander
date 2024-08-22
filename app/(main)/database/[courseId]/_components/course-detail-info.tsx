@@ -3,17 +3,18 @@ import { studentEvaluationColor, scoreColor } from "@/lib/text-color";
 
 
 interface CourseDetailInfoProps {
-  sessionStatus: string;
-  totalPublishedVideoDuration: number; // 发布视频总时长
-  prerequisiteCourses: number; // 先修课程: 0 - 无, 1 - 有
-  studentEvaluation: number; // 学生推荐度 (0-1)
+  workLoad: string; // 学习所需时间
+  status: string; // 开课状态
+  difficulty: string; // 课程难度
+  studentRecommendationIndex: number; // 学生推荐度 (0-1)
   finalScore: number; // 课程综合评分
+  prerequisites: string | null; //
 }
 
 
 const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
 
-  const sessionStatusColor = info.sessionStatus === "已结束" ? "text-gray-500" : "text-green-500";
+  const statusColor = info.status === "已结束" ? "text-gray-500" : "text-green-500";
 
   return (
     <CourseDetailInfoCard>
@@ -22,25 +23,37 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
           学习所需时间
         </CourseDetailInfoTitle>
         <CourseDetailInfoValue>
-          {Math.floor(info.totalPublishedVideoDuration / 69)} 小时
+          {info.workLoad}
         </CourseDetailInfoValue>
       </CourseDetailInfoItem>
+
+      <CourseDetailInfoItem>
+        <CourseDetailInfoTitle>
+          难度
+        </CourseDetailInfoTitle>
+        <CourseDetailInfoValue>
+          {info.difficulty}
+        </CourseDetailInfoValue>
+      </CourseDetailInfoItem>
+
+      {
+        info.prerequisites &&
+        <CourseDetailInfoItem>
+          <CourseDetailInfoTitle>
+            先修课
+          </CourseDetailInfoTitle>
+          <CourseDetailInfoValue>
+            {info.prerequisites}
+          </CourseDetailInfoValue>
+        </CourseDetailInfoItem>
+      }
 
       <CourseDetailInfoItem>
         <CourseDetailInfoTitle>
           课程状态
         </CourseDetailInfoTitle>
-        <CourseDetailInfoValue className={sessionStatusColor}>
-          {info.sessionStatus}
-        </CourseDetailInfoValue>
-      </CourseDetailInfoItem>
-
-      <CourseDetailInfoItem>
-        <CourseDetailInfoTitle>
-          先修课
-        </CourseDetailInfoTitle>
-        <CourseDetailInfoValue>
-          {info.prerequisiteCourses ? "有" : "无"}
+        <CourseDetailInfoValue className={statusColor}>
+          {info.status}
         </CourseDetailInfoValue>
       </CourseDetailInfoItem>
 
@@ -48,8 +61,8 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
         <CourseDetailInfoTitle>
           学生推荐度
         </CourseDetailInfoTitle>
-        <CourseDetailInfoValue className={studentEvaluationColor(info.studentEvaluation)}>
-          {info.studentEvaluation === 0 ? "暂无" : `${Math.floor(info.studentEvaluation * 100)}%`}
+        <CourseDetailInfoValue className={studentEvaluationColor(info.studentRecommendationIndex)}>
+          {info.studentRecommendationIndex === 0 ? "暂无" : `${info.studentRecommendationIndex}%`}
         </CourseDetailInfoValue>
       </CourseDetailInfoItem>
 
@@ -58,7 +71,7 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
           综合推荐度
         </CourseDetailInfoTitle>
         <CourseDetailInfoValue className={scoreColor(info.finalScore)}>
-          {Math.floor(info.finalScore * 100)}%
+          {info.finalScore}%
         </CourseDetailInfoValue>
       </CourseDetailInfoItem>
     </CourseDetailInfoCard>

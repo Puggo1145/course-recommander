@@ -1,22 +1,27 @@
-import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
 
+// ui
+import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
+// components
 import Syllabus from "./syllabus";
 import KnowledgeRatePie from "../_components/knowledge-rate-pie";
-import CourseEvaluationWordCloud from "./course-evaluation-wordcloud";
 import StudentCountTrend from "./student-count-trend";
+import Teachers from "./teachers";
+// types
+import type { Teacher } from "./teachers";
 
 
 interface CourseBasicBentoProps {
     syllabus: string[];
-    // wordCloud: { name: string, value: number }[];
     knowledgePointCoverageRate: number;
     studentCountTrend: number[];
+    teachers: Teacher[];
 }
 
 const CourseBasicBento: React.FC<CourseBasicBentoProps> = ({
     syllabus,
     knowledgePointCoverageRate,
     studentCountTrend,
+    teachers,
 }) => {
     const studentCountTrendLabels = studentCountTrend.map((_, idx) => `第 ${idx + 1} 次开课`);
 
@@ -28,10 +33,10 @@ const CourseBasicBento: React.FC<CourseBasicBentoProps> = ({
             background: <Syllabus syllabus={syllabus} />,
         },
         {
-            name: "课程词云",
-            description: "学习者对课程的普遍评价和感受",
+            name: "课程团队",
+            description: "本课程由以上教师共同出品",
             className: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3",
-            background: <CourseEvaluationWordCloud />,
+            background: <Teachers teachers={teachers} />,
         },
         {
             name: "知识点覆盖率",

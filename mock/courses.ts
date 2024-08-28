@@ -1,6 +1,18 @@
+type WordCloud = {
+    name: string,
+    value: number
+}
+type Teacher = {
+    name: string,
+    title: string,
+    desc: string
+}
+
 export type Course = {
     basicInformation: {
+        id: number,
         name: string,
+        href: string, // 课程链接
         tags: {
             university: string,
             nationBest: boolean,
@@ -11,6 +23,7 @@ export type Course = {
             headingIntroduction: string,
             teachingTarget: string,
         },
+        courseTeam: Teacher[],
         workLoad: string,
         status: string,
         difficulty: string,
@@ -18,29 +31,82 @@ export type Course = {
         finalScore: number,
         prerequisites: string | null
     },
+    // TODO - 展示部分三级指标
     radar: {
-        [key: string]: number
+        [key: string]: { score: number, subIndexes: any }
 
-        strengthOfCourseTeam: number,
-        popularityIndex: number,
-        interactionIndex: number,
-        resourcesRichnessIndex: number,
-        sAoRatio: number,
+        strengthOfCourseTeam: {
+            score: number,
+            subIndexes: {
+
+            }
+        },
+        popularityIndex: {
+            score: number,
+            subIndexes: {
+                avarageWatchDuration: number,
+                studentCount: number,
+                videoCompletionRate: number,
+                pdfWatchRate: number,
+                richTextWatchRate: number,
+            }
+        },
+        interactionIndex: {
+            score: number,
+            subIndexes: {
+                discussionCount: number,
+                announcementCount: number,
+                postCount: number,
+                studentReplyRate: number,
+                teacherReplyRate: number,
+            }
+        },
+        resourcesRichnessIndex: {
+            score: number,
+            subIndexes: {
+                // hasTextbook: boolean,
+                relatedCourseCount: number,
+                homeworkCount: number,
+                pdfCount: number,
+                richTextCount: number,
+            }
+        },
+        sAoRatio: {
+            score: number,
+            subIndexes: {
+
+            }
+        },
     },
     visualization: {
-        wordCloud: { name: string, value: number }[],
+        id: number,
         knowledgeCoverageRatio: number,
         studentCountTrend: number[],
         syllabus: string[]
     },
+    commentsAnalysis: {
+        id: number,
+        wordCloud: {
+            positive: WordCloud[]
+            negative: WordCloud[]
+        },
+        LDA: {
+            A: string,
+            B: string,
+            C: string,
+        },
+    }
     recommendation: []
 }
+
 
 export const courses: Course[] = [
     {
         // 1. 基础信息
         basicInformation: {
+            id: 0,
             name: "Python 程序设计",
+            href: "xxx",
             tags: {
                 university: "北京理工大学",
                 nationBest: true,
@@ -60,6 +126,18 @@ export const courses: Course[] = [
                 Python科目备考：面向全国计算机等级考试二级Python科目的备考考生，作为在线备考资源
                 再试一次的尝试：面向拟放弃计算机或编程学习的学习者，作为再试一次的课程资源，学不会这门课学再放弃不迟...`,
             },
+            courseTeam: [
+                {
+                    name: "嵩天",
+                    title: "教授",
+                    desc: `嵩天, 博士, 教授, 博士生导师, 北京理工大学网络空间安全学院副院长, "网络空间安全"和"计算机科学与技术"双学科博士生导师, 北京市青年教学名师, 北京理工大学教学名师. 美国圣路易斯华盛顿大学(Washington University in St.Louis)公派访问学者. 2002年, 毕业于东北大学计算机系, 获学士学位, 校98尖子班(实验班)成员, 同年保送至清华大学. 2008年1月, 毕业于清华大学计算机系, 获工学博士学位. 同年, 进入北京理工大学计算机学院工作. ACM/IEEE会员, 中国计算机学会高级会员, 中国计算机学会体系结构专委会常务委员、教育专委会委员. 全国高校计算机教育研究会常务理事、青年教师工作委员会主任. 主讲：Python语言程序设计、网络与信息安全、计算机网络等课程, 主要从事未来互联网体系结构、网络信息安全、智慧学习空间等方向研究。`
+                },
+                {
+                    name: "黄天羽",
+                    title: "教授",
+                    desc: `黄天羽，北京理工大学计算机学院教授，北京市高等学校青年教学名师，博导，美国宾夕法尼亚大学公派访问学者，2007 年 4 月获得北京理工大学计算机应用专业博士学位，留校任教北京理工大学。主讲课程为《Python语言程序设计》、《软件工程基础训练》、《动画原理与实现》、《虚拟现实技术与应用》、《数字表演基础与应用》、《人群建模与仿真》，主持建设2门国家级一流课程，获北京市教育教学成果奖2项，指导学生获得全国“互联网+”比赛金奖、“挑战杯”比赛银奖。研究方向包括虚拟现实、计算机仿真、数字表演等`
+                }
+            ],
             workLoad: "2-3 小时每周",
             status: "已结束",
             difficulty: "初级",
@@ -70,28 +148,50 @@ export const courses: Course[] = [
 
         // 2. 课程雷达图
         radar: {
-            strengthOfCourseTeam: 90.3,
-            popularityIndex: 86.1,
-            interactionIndex: 92.5,
-            resourcesRichnessIndex: 88.7,
-            sAoRatio: 79.2,
+            strengthOfCourseTeam: {
+                score: 90,
+                subIndexes: {
+                }
+            },
+            popularityIndex: {
+                score: 88.1,
+                subIndexes: {
+                    avarageWatchDuration: 10,
+                    studentCount: 10000,
+                    videoCompletionRate: 80,
+                    pdfWatchRate: 70,
+                    richTextWatchRate: 60,
+                }
+            },
+            interactionIndex: {
+                score: 87.2,
+                subIndexes: {
+                    discussionCount: 100,
+                    announcementCount: 80,
+                    postCount: 70,
+                    studentReplyRate: 60,
+                    teacherReplyRate: 50
+                }
+            },
+            resourcesRichnessIndex: {
+                score: 85.3,
+                subIndexes: {
+                    relatedCourseCount: 10,
+                    homeworkCount: 8,
+                    pdfCount: 7,
+                    richTextCount: 6,
+                }
+            },
+            sAoRatio: {
+                score: 84.4,
+                subIndexes: {
+                }
+            },
         },
 
         // 3. 课程可视化
         visualization: {
-            wordCloud: [
-                { name: '内容丰富', value: 100 },
-                { name: '课程易懂', value: 80 },
-                { name: '教师耐心', value: 70 },
-                { name: '互动性强', value: 60 },
-                { name: '实用性高', value: 50 },
-                { name: '难度适中', value: 40 },
-                { name: '节奏紧凑', value: 35 },
-                { name: '知识点全面', value: 30 },
-                { name: '案例丰富', value: 25 },
-                { name: '结构清晰', value: 20 },
-                { name: '课堂氛围好', value: 15 },
-            ],
+            id: 0,
             knowledgeCoverageRatio: 91.2,
             studentCountTrend: [
                 108718,
@@ -168,6 +268,46 @@ export const courses: Course[] = [
                 "0.3 全课程总结与学习展望"
             ],
         },
+
+        // 4. 评论分析
+        commentsAnalysis: {
+            id: 0,
+            wordCloud: {
+                positive: [
+                    { name: '内容丰富', value: 100 },
+                    { name: '课程易懂', value: 80 },
+                    { name: '教师耐心', value: 70 },
+                    { name: '互动性强', value: 60 },
+                    { name: '实用性高', value: 50 },
+                    { name: '难度适中', value: 40 },
+                    { name: '节奏紧凑', value: 35 },
+                    { name: '知识点全面', value: 30 },
+                    { name: '案例丰富', value: 25 },
+                    { name: '结构清晰', value: 20 },
+                    { name: '课堂氛围好', value: 15 },
+                ],
+                negative: [
+                    { name: '内容丰富', value: 100 },
+                    { name: '课程易懂', value: 80 },
+                    { name: '教师耐心', value: 70 },
+                    { name: '互动性强', value: 60 },
+                    { name: '实用性高', value: 50 },
+                    { name: '难度适中', value: 40 },
+                    { name: '节奏紧凑', value: 35 },
+                    { name: '知识点全面', value: 30 },
+                    { name: '案例丰富', value: 25 },
+                    { name: '结构清晰', value: 20 },
+                    { name: '课堂氛围好', value: 15 },
+                ],
+            },
+            LDA: {
+                A: "适用于 Python 初学者的入门课程，知识点清晰、讲解结构层次分明，内容详尽",
+                B: "课程资源包含开源代码、相关教材以及知识点图解；教学风格轻松有趣；讲解耐心",
+                C: "视频时长较短、分小节数量较多，导致观感不佳，短时间内就需要刷新章节",
+            }
+        },
+
+        // 5. 推荐课程
         recommendation: []
     }
 ]

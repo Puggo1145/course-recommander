@@ -53,10 +53,10 @@ const StudentCountTrend: React.FC<{ data: number[], labels: string[] }> = ({ dat
                 type: 'line',
                 data: data,
                 areaStyle: {
-                    color: 'rgba(121, 123, 154, 0.3)',
+                    color: 'rgba(65, 97, 219, 0.3)',
                 },
                 lineStyle: {
-                    color: '#6172b8',
+                    color: '#3662e3',
                     width: 2,
                 },
                 symbolSize: 6,

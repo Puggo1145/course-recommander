@@ -4,23 +4,24 @@
 import Container from "@/components/cus-ui/container";
 import BackButton from "@/components/cus-ui/back-button";
 import Title from "@/components/cus-ui/title";
-import { 
-    CourseDescription, 
-    CourseDescriptionItem 
+import {
+    CourseDescription,
+    CourseDescriptionItem
 } from "./_components/course-description";
 import Content from "@/components/cus-ui/content";
 import {
     CourseDetailHeader,
     CourseDetailIntroduction,
-    CourseDetailChart
 } from "./_components/course-detail";
+import { Button } from "@/components/ui/button";
+// components
 import CourseBadges from "../_components/course-badges";
 import CourseDetailInfo from "./_components/course-detail-info";
 import CommentsVisual from "./_components/comments-visual";
-// bento content
 import CourseBasicBento from "./_components/course-basic-bento";
-// visual
-import Radar from "./_components/radar";
+import RadarWithData from "./_components/radar-with-data";
+// utils
+import Link from "next/link";
 // mock data
 import { courses } from "@/mock/courses";
 
@@ -37,14 +38,12 @@ const Page = ({ params }: { params: { courseId: number } }) => {
                     <Title className="line-clamp-1 flex items-center cursor-pointer hover:text-gray-600 transition-all">
                         {course.basicInformation.name}
                     </Title>
-                    
                     <CourseBadges
                         university={course.basicInformation.tags.university}
                         isNationalQualityCourse={course.basicInformation.tags.nationBest}
                         primaryDiscipline={course.basicInformation.tags.primaryDisciplines}
                         secondaryDiscipline={course.basicInformation.tags.secondaryDisciplines}
                     />
-                    
                     <CourseDescription>
                         <CourseDescriptionItem>
                             <strong>课程简介：</strong>
@@ -55,20 +54,23 @@ const Page = ({ params }: { params: { courseId: number } }) => {
                             {course.basicInformation.description.teachingTarget}
                         </CourseDescriptionItem>
                     </CourseDescription>
-
-                    <CourseDetailInfo
-                        status={course.basicInformation.status}
-                        workLoad={course.basicInformation.workLoad}
-                        difficulty={course.basicInformation.difficulty}
-                        prerequisites={course.basicInformation.prerequisites}
-                        studentRecommendationIndex={course.basicInformation.studentRecommendationIndex}
-                        finalScore={course.basicInformation.finalScore}
-                    />
-
+                    <Button
+                        asChild
+                        className="w-fit px-8 py-6 text-md"
+                    >
+                        <Link href={course.basicInformation.href}>
+                            查看课程
+                        </Link>
+                    </Button>
                 </CourseDetailIntroduction>
-                <CourseDetailChart>
-                    <Radar data={course.radar} />
-                </CourseDetailChart>
+                <CourseDetailInfo
+                    status={course.basicInformation.status}
+                    workLoad={course.basicInformation.workLoad}
+                    difficulty={course.basicInformation.difficulty}
+                    prerequisites={course.basicInformation.prerequisites}
+                    studentRecommendationIndex={course.basicInformation.studentRecommendationIndex}
+                    finalScore={course.basicInformation.finalScore}
+                />
             </CourseDetailHeader>
 
             <Content title="课程速览">
@@ -80,18 +82,16 @@ const Page = ({ params }: { params: { courseId: number } }) => {
                 />
             </Content>
 
+            <Content title="课程雷达图">
+                <RadarWithData radar={course.radar} />
+            </Content>
+
             <Content title="评论分析">
                 <CommentsVisual
                     positiveWordCloud={course.commentsAnalysis.wordCloud.positive}
                     negativeWordCloud={course.commentsAnalysis.wordCloud.negative}
                     LDA={course.commentsAnalysis.LDA}
                 />
-            </Content>
-            
-            <Content title="相关推荐">
-                <div className="w-full flex items-center justify-center min-h-[200px]">
-                    <p className="text-muted-foreground">暂无相关推荐</p>
-                </div>
             </Content>
         </Container>
     );

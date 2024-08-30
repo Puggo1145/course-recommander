@@ -3,24 +3,32 @@
 import ReactEchartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { RadarChart } from 'echarts/charts';
-// 标签自动布局、全局过渡动画等特性
 import { LabelLayout, UniversalTransition } from 'echarts/features';
-// 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
 import { CanvasRenderer } from 'echarts/renderers';
 // types
-import type { Course } from '@/mock/courses';
-
+import type { Course } from '@/types/course';
 
 echarts.use([
     RadarChart,
     LabelLayout,
     UniversalTransition,
-    CanvasRenderer,
+    CanvasRenderer
 ]);
+
+type Indicator = {
+    name: string;
+    source: string;
+    max: number;
+    subIndexes: {
+        name: string;
+        source: string;
+        unit: 0 | 1;
+    }[];
+};
 
 
 const Radar: React.FC<{ data: Course["radar"] }> = ({ data }) => {
-    const indicators = [
+    const indicators: Indicator[] = [
         {
             name: '课程团队实力',
             source: "strengthOfCourseTeam",
@@ -117,16 +125,18 @@ const Radar: React.FC<{ data: Course["radar"] }> = ({ data }) => {
     };
 
     return (
-        <ReactEchartsCore
-            echarts={echarts}
-            option={options}
-            notMerge={true}
-            lazyUpdate={true}
-            style={{
-                width: "540px",
-                height: "440px",
-            }}
-        />
+        <div style={{ position: 'relative' }}>
+            <ReactEchartsCore
+                echarts={echarts}
+                option={options}
+                notMerge={true}
+                lazyUpdate={true}
+                style={{
+                    width: "520px",
+                    height: "440px",
+                }}
+            />
+        </div>
     );
 };
 

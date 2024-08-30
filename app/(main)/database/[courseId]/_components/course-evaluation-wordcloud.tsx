@@ -41,7 +41,7 @@ const CourseEvaluationWordCloud: React.FC<ICourseEvaluationWordCloudProps> = ({ 
       option={options}
       notMerge={true}
       lazyUpdate={true}
-      style={{ width: '100%', height: '400px', position: 'absolute', top: 0, left: 0 }}
+      style={{ width: '100%', height: '360px', position: 'absolute', top: 0, left: 0 }}
     />
   );
 };

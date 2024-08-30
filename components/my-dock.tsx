@@ -53,7 +53,7 @@ const MyDock: React.FC = () => {
 
     return (
         <div className={cn(
-            "fixed w-full transition-all duration-500 flex flex-col items-center",
+            "fixed z-50 w-full transition-all duration-500 flex flex-col items-center",
             !isFold && "bottom-4",
             isFold && "-bottom-[60px]",
         )}>

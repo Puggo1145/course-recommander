@@ -3,7 +3,7 @@
 import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
 // components
 import Syllabus from "./syllabus";
-import KnowledgeRatePie from "../_components/knowledge-rate-pie";
+import Rate from "../_components/rate";
 import StudentCountTrend from "./student-count-trend";
 import Teachers from "./teachers";
 // types
@@ -42,7 +42,7 @@ const CourseBasicBento: React.FC<CourseBasicBentoProps> = ({
             name: "知识点覆盖率",
             description: "课程所教授内容的全面性",
             className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-3",
-            background: <KnowledgeRatePie knowledgeCoverageRatio={knowledgePointCoverageRate} />,
+            background: <Rate rate={knowledgePointCoverageRate} height={400} />,
         },
         {
             name: "课程热度趋势",

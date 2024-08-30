@@ -83,7 +83,7 @@ export default CourseDetailInfo;
 
 const CourseDetailInfoCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="w-fit px-6 py-4 rounded-2xl border bg-card flex gap-x-8">
+    <div className="min-w-[240px] px-4 py-6 rounded-2xl border bg-card flex flex-col gap-y-4">
       {children}
     </div>
   );
@@ -91,7 +91,7 @@ const CourseDetailInfoCard: React.FC<{ children: React.ReactNode }> = ({ childre
 
 const CourseDetailInfoItem: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col">
       {children}
     </div>
   );

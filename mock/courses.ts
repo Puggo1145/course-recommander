@@ -1,104 +1,4 @@
-type WordCloud = {
-    name: string,
-    value: number
-}
-type Teacher = {
-    name: string,
-    title: string,
-    desc: string
-}
-
-export type Course = {
-    basicInformation: {
-        id: number,
-        name: string,
-        href: string, // 课程链接
-        tags: {
-            university: string,
-            nationBest: boolean,
-            primaryDisciplines: string[],
-            secondaryDisciplines: string[],
-        },
-        description: {
-            headingIntroduction: string,
-            teachingTarget: string,
-        },
-        courseTeam: Teacher[],
-        workLoad: string,
-        status: string,
-        difficulty: string,
-        studentRecommendationIndex: number,
-        finalScore: number,
-        prerequisites: string | null
-    },
-    // TODO - 展示部分三级指标
-    radar: {
-        [key: string]: { score: number, subIndexes: any }
-
-        strengthOfCourseTeam: {
-            score: number,
-            subIndexes: {
-
-            }
-        },
-        popularityIndex: {
-            score: number,
-            subIndexes: {
-                avarageWatchDuration: number,
-                studentCount: number,
-                videoCompletionRate: number,
-                pdfWatchRate: number,
-                richTextWatchRate: number,
-            }
-        },
-        interactionIndex: {
-            score: number,
-            subIndexes: {
-                discussionCount: number,
-                announcementCount: number,
-                postCount: number,
-                studentReplyRate: number,
-                teacherReplyRate: number,
-            }
-        },
-        resourcesRichnessIndex: {
-            score: number,
-            subIndexes: {
-                // hasTextbook: boolean,
-                relatedCourseCount: number,
-                homeworkCount: number,
-                pdfCount: number,
-                richTextCount: number,
-            }
-        },
-        sAoRatio: {
-            score: number,
-            subIndexes: {
-
-            }
-        },
-    },
-    visualization: {
-        id: number,
-        knowledgeCoverageRatio: number,
-        studentCountTrend: number[],
-        syllabus: string[]
-    },
-    commentsAnalysis: {
-        id: number,
-        wordCloud: {
-            positive: WordCloud[]
-            negative: WordCloud[]
-        },
-        LDA: {
-            A: string,
-            B: string,
-            C: string,
-        },
-    }
-    recommendation: []
-}
-
+import type { Course } from "@/types/course"
 
 export const courses: Course[] = [
     {
@@ -106,7 +6,7 @@ export const courses: Course[] = [
         basicInformation: {
             id: 0,
             name: "Python 程序设计",
-            href: "xxx",
+            href: "https://www.icourse163.org/course/BIT-268001",
             tags: {
                 university: "北京理工大学",
                 nationBest: true,
@@ -287,17 +187,17 @@ export const courses: Course[] = [
                     { name: '课堂氛围好', value: 15 },
                 ],
                 negative: [
-                    { name: '内容丰富', value: 100 },
-                    { name: '课程易懂', value: 80 },
-                    { name: '教师耐心', value: 70 },
-                    { name: '互动性强', value: 60 },
-                    { name: '实用性高', value: 50 },
-                    { name: '难度适中', value: 40 },
-                    { name: '节奏紧凑', value: 35 },
-                    { name: '知识点全面', value: 30 },
-                    { name: '案例丰富', value: 25 },
-                    { name: '结构清晰', value: 20 },
-                    { name: '课堂氛围好', value: 15 },
+                    { name: '视频时长过短', value: 100 },
+                    { name: '章节刷新频繁', value: 80 },
+                    { name: '知识点重复', value: 70 },
+                    { name: '难度不均衡', value: 60 },
+                    { name: '课程资源不足', value: 50 },
+                    { name: '讲解速度过快', value: 40 },
+                    { name: '内容重复', value: 35 },
+                    { name: '知识点不清晰', value: 30 },
+                    { name: '教学风格不统一', value: 25 },
+                    { name: '案例不够丰富', value: 20 },
+                    { name: '课程节奏不合理', value: 15 },
                 ],
             },
             LDA: {

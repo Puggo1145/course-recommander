@@ -3,7 +3,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface CourseBadgesProps {
     university: string;
-    isNationalQualityCourse: boolean;
+    isNationalQualityCourse: 1 | 0;
     primaryDiscipline: string[];
     secondaryDiscipline: string[];
 }
@@ -20,7 +20,7 @@ const CourseBadges: React.FC<CourseBadgesProps> = ({
             <div className="flex items-center gap-2">
                 <Badge>{university}</Badge>
                 {
-                    isNationalQualityCourse && (
+                    isNationalQualityCourse === 1 && (
                         <Badge>国家精品课程</Badge>
                     )
                 }

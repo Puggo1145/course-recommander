@@ -16,10 +16,10 @@ const Content: React.FC<ContentProps> = ({
     const contentStyle = `py-${paddingY} px-${paddingX}`
 
     return (
-        <div className={cn("w-full mt-4", contentStyle)}>
+        <div className={cn("w-full mt-12", contentStyle)}>
             {
                 title &&
-                <h2 className="text-2xl font-bold mb-4 pl-2">
+                <h2 className="text-3xl font-bold mb-4 pl-2 text-muted-foreground">
                     {title}
                 </h2>
             }

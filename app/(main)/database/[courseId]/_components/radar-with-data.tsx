@@ -90,7 +90,7 @@ const PopularityIndexSubIndexBento = ({
             name: "平均观看时长",
             description: "",
             className: "col-span-1",
-            background: <NumberIndex value={data.avarageWatchDuration} unit="分钟" />
+            background: <NumberIndex value={data.averageWatchDuration} unit="分钟" />
         },
         {
             name: "选课人数",

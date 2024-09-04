@@ -1,8 +1,12 @@
+"use client"
+
 import FlickeringGrid from "@/components/magicui/flickering-grid";
+import BackButton from "@/components/cus-ui/back-button";
 
 const courseDetailLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <>
+            <BackButton />
             <div className="relative z-10">
                 {children}
             </div>

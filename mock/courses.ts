@@ -206,8 +206,5 @@ export const courses: Course[] = [
                 C: "视频时长较短、分小节数量较多，导致观感不佳，短时间内就需要刷新章节",
             }
         },
-
-        // 5. 推荐课程
-        recommendation: []
     }
 ]

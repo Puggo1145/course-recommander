@@ -15,24 +15,31 @@ import {
 } from "./_components/course-detail";
 import { Button } from "@/components/ui/button";
 // components
+import Spinner from "../../_components/spinner";
 import CourseBadges from "../_components/course-badges";
 import CourseDetailInfo from "./_components/course-detail-info";
 import CommentsVisual from "./_components/comments-visual";
 import CourseBasicBento from "./_components/course-basic-bento";
 import RadarWithData from "./_components/radar-with-data";
+// hooks
+import useFetchCourse from "@/hooks/useFetchCourse";
 // utils
 import Link from "next/link";
-// mock data
-import { courses } from "@/mock/courses";
 
 
 const Page = ({ params }: { params: { courseId: number } }) => {
-    const course = courses[params.courseId];
+    const { course, loading } = useFetchCourse(params.courseId);
 
+    if (loading || !course) {
+        return (
+            <Container flex flexCol Xcenter Ycenter>
+                <Spinner />
+            </Container>
+        )
+    }
 
     return (
         <Container Xcenter={false} Ycenter={false}>
-            <BackButton />
             <CourseDetailHeader>
                 <CourseDetailIntroduction>
                     <Title className="line-clamp-1 flex items-center cursor-pointer hover:text-gray-600 transition-all">

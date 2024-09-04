@@ -15,7 +15,7 @@ export type Course = {
         href: string, // 课程链接
         tags: {
             university: string,
-            nationBest: boolean,
+            nationBest: 0 | 1,
             primaryDisciplines: string[],
             secondaryDisciplines: string[],
         },
@@ -44,7 +44,7 @@ export type Course = {
         popularityIndex: {
             score: number,
             subIndexes: {
-                avarageWatchDuration: number,
+                averageWatchDuration: number,
                 studentCount: number,
                 videoCompletionRate: number,
                 pdfWatchRate: number,
@@ -96,5 +96,4 @@ export type Course = {
             C: string,
         },
     }
-    recommendation: []
 }

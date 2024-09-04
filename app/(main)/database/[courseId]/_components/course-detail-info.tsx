@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { studentEvaluationColor, scoreColor } from "@/lib/text-color";
+import { ComponentProps } from "react";
 
 
 interface CourseDetailInfoProps {
@@ -42,7 +43,7 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
           <CourseDetailInfoTitle>
             先修课
           </CourseDetailInfoTitle>
-          <CourseDetailInfoValue>
+          <CourseDetailInfoValue className="text-md">
             {info.prerequisites}
           </CourseDetailInfoValue>
         </CourseDetailInfoItem>
@@ -81,7 +82,7 @@ const CourseDetailInfo: React.FC<CourseDetailInfoProps> = (info) => {
 export default CourseDetailInfo;
 
 
-const CourseDetailInfoCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CourseDetailInfoCard: React.FC<ComponentProps<'div'>> = ({ children }) => {
   return (
     <div className="min-w-[240px] px-4 py-6 rounded-2xl border bg-card flex flex-col gap-y-4">
       {children}
@@ -89,7 +90,7 @@ const CourseDetailInfoCard: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 }
 
-const CourseDetailInfoItem: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CourseDetailInfoItem: React.FC<ComponentProps<'div'>> = ({ children }) => {
   return (
     <div className="flex flex-col">
       {children}
@@ -97,7 +98,7 @@ const CourseDetailInfoItem: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 }
 
-const CourseDetailInfoTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CourseDetailInfoTitle: React.FC<ComponentProps<'h2'>> = ({ children }) => {
   return (
     <h2 className="text-sm text-gray-400">
       {children}
@@ -105,13 +106,9 @@ const CourseDetailInfoTitle: React.FC<{ children: React.ReactNode }> = ({ childr
   );
 }
 
-interface CourseDetailInfoValueProps {
-  children: React.ReactNode;
-  className?: string;
-}
-const CourseDetailInfoValue: React.FC<CourseDetailInfoValueProps> = ({ children, className }) => {
+const CourseDetailInfoValue: React.FC<ComponentProps<'p'>> = ({ children, className }) => {
   return (
-    <p className={cn(className, "text-xl font-bold")}>
+    <p className={cn("text-xl font-bold", className)}>
       {children}
     </p>
   );

@@ -57,7 +57,7 @@ const BentoCard = ({
     </div>
     {
       background && 
-      <div className="relative flex-1">{background}</div>
+      <div className="relative h-full">{background}</div>
     }
 
 

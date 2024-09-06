@@ -26,13 +26,13 @@ const CommentsVisual: React.FC<ICommentsVisualProps> = ({
         {
             name: "积极评价词云",
             description: "学习者对课程的积极评价关键词",
-            className: "lg:col-start-1 lg:col-end-2 lg:row-span-3",
+            className: "min-h-[480px] lg:col-start-1 lg:col-end-2 lg:row-span-3",
             background: <CourseEvaluationWordCloud data={positiveWordCloud} />,
         },
         {
             name: "消极评价词云",
             description: "学习者对课程的消极评价关键词",
-            className: "lg:col-start-2 lg:col-end-3 lg:row-span-3",
+            className: "min-h-[480px] lg:col-start-2 lg:col-end-3 lg:row-span-3",
             background: <CourseEvaluationWordCloud data={negativeWordCloud} />,
         },
         {

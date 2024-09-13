@@ -6,7 +6,7 @@ import RecommandCourses from "./_components/recommand-courses";
 // types
 import type { Course } from "@/types/course";
 // mock
-import { courses } from "@/mock/courses";
+// import { courses } from "@/mock/courses";
 
 
 const Page: React.FC = async () => {

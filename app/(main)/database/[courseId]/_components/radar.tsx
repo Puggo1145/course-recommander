@@ -91,7 +91,7 @@ const Radar: React.FC<{ data: Course["radar"] }> = ({ data }) => {
                 },
                 rich: {
                     name: {
-                        fontSize: 12,
+                        fontSize: 16,
                         color: '#6c727f',
                         align: 'center'
                     },
@@ -132,8 +132,8 @@ const Radar: React.FC<{ data: Course["radar"] }> = ({ data }) => {
                 notMerge={true}
                 lazyUpdate={true}
                 style={{
-                    width: "520px",
-                    height: "440px",
+                    width: "560px",
+                    height: "480px",
                 }}
             />
         </div>

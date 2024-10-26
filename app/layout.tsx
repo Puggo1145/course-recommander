@@ -15,7 +15,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Course Recommander",
+  title: "Course Recommender",
   description: "找到最适合你的学习方式",
 };
 

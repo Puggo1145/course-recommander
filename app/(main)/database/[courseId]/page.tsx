@@ -2,7 +2,6 @@
 
 // ui
 import Container from "@/components/cus-ui/container";
-import BackButton from "@/components/cus-ui/back-button";
 import Title from "@/components/cus-ui/title";
 import {
     CourseDescription,
@@ -25,7 +24,6 @@ import RadarWithData from "./_components/radar-with-data";
 import useFetchCourse from "@/hooks/useFetchCourse";
 // utils
 import Link from "next/link";
-
 
 const Page = ({ params }: { params: { courseId: number } }) => {
     const { course, loading } = useFetchCourse(params.courseId);

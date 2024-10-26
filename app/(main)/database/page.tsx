@@ -19,7 +19,7 @@ const Page: React.FC = async () => {
       <Content paddingX={0}>
         <RecommandCourses courses={courses} />
       </Content>
-    </Container> 
+    </Container>
   );
 };
 

@@ -10,7 +10,7 @@ import type { Course } from "@/types/course";
 
 
 const Page: React.FC = async () => {
-  const res = await fetch(process.env.BACKEND_URL + "/course");
+  const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/course");
   const courses = await res.json() as Course[];
 
   return (

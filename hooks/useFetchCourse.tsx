@@ -10,7 +10,7 @@ const useFetchCourse = (id: number) => {
         setLoading(true);
 
         try {
-            const res = await fetch("http://8.137.118.167:5000/course/" + id);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/course/${id}`);
             if (res.ok) {
                 const course = await res.json() as Course;
                 setCourse(course);
